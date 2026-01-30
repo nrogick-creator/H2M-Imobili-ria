@@ -11,7 +11,7 @@ export default function SobrePage() {
         <section className="bg-gradient-to-br from-[#F3F8F4] to-white py-12 md:py-16">
           <div className="container mx-auto px-4">
             <h1 className="text-3xl md:text-5xl font-bold text-[#111A17] mb-4 font-serif">Sobre a H2M</h1>
-            <p className="text-lg text-[#718878] max-w-2xl">Excelência em imóveis de alto padrão há mais de 15 anos</p>
+            <p className="text-lg text-[#718878] max-w-2xl">Excelência em imóveis há mais de 15 anos</p>
           </div>
         </section>
 

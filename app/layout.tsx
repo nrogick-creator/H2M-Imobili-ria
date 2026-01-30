@@ -9,7 +9,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 const _playfair = Playfair_Display({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "H2M Imobiliária - Imóveis de Alto Padrão",
+  title: "H2M Imobiliária",
   description: "Imóveis para venda e locação. Excelência, sofisticação e atendimento personalizado.",
 }
 
