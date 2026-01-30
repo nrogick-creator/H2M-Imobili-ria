@@ -16,7 +16,7 @@ export function Footer() {
               className="h-32 w-32 brightness-0 invert"
             />
             <p className="mt-4 text-sm text-[#F3F8F4]/70 leading-relaxed">
-              CRESCI/RJ Nº 11.290
+              CRECI/RJ Nº 11.290
             </p>
           </div>
 
@@ -97,7 +97,7 @@ export function Footer() {
               <li className="flex items-start gap-2 justify-center md:justify-start">
                 <MapPin className="h-4 w-4 mt-1 flex-shrink-0 text-[#718878]" />
                 <span className="text-sm text-[#F3F8F4]/70">
-                  Av. Olegário Maciel, 460 - Sala 210
+                  Av. Olegário Maciel, 518 - Sala 210
                   <br />
                   Barra da Tijuca - Rio de Janeiro
                   < br />

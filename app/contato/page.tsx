@@ -66,7 +66,7 @@ export default function ContatoPage() {
                         <div>
                           <h3 className="font-semibold text-[#111A17] mb-1">Endereço</h3>
                           <p className="text-muted-foreground leading-relaxed">
-                            Av. Olegário Maciel, 460 - Sala 210
+                            Av. Olegário Maciel, 518 - Sala 210
                             <br />
                             Barra da Tijuca - Rio de Janeiro
                             <br />

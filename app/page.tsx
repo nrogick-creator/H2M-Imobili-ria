@@ -38,7 +38,8 @@ export default async function HomePage() {
                 Seu Imóvel dos Sonhos Está Aqui
               </h1>
               <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed drop-shadow-md">
-                Imóveis de alto padrão cuidadosamente selecionados para você. Excelência, sofisticação e atendimento
+                Imóveis cuidadosamente selecionados para você. <br /> 
+                Excelência, sofisticação e atendimento
                 personalizado.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -54,7 +55,9 @@ export default async function HomePage() {
                   variant="outline"
                   className="border-white text-white hover:bg-white hover:text-[#244235] bg-transparent shadow-lg"
                 >
-                  <Link href="/imoveis?type=rent">Ver Imóveis para Locação</Link>
+                  <Link href="/imoveis?type=rent">Ver Imóveis para Locação
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
                 </Button>
               </div>
             </div>
