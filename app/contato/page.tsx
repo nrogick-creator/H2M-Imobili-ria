@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -8,6 +11,50 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Phone, MapPin, Clock } from "lucide-react"
 
 export default function ContatoPage() {
+  const [nome, setNome] = useState("") 
+  const [email, setEmail] = useState("") 
+  const [telefone, setTelefone] = useState("")
+  const [assunto, setAssunto] = useState("")
+  const [mensagem, setMensagem] = useState("")
+  const [loading, setLoading] = useState(false)
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setLoading(true)
+
+    try {
+      const res = await fetch("/api/contato", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nome,
+          email,
+          telefone,  
+          assunto,  
+          mensagem,  
+        }),  
+      }) 
+
+      const data = await res.json().catch(() => ({})) as any  
+
+      if (!res.ok) {  
+        alert(data?.error || "Erro ao enviar mensagem.") 
+        return  
+      }  
+
+      alert("Mensagem enviada com sucesso!")  
+      setNome("")  
+      setEmail("")  
+      setTelefone("")  
+      setAssunto("")  
+      setMensagem("")  
+    } catch {  
+      alert("Erro de conexão. Tente novamente.")  
+    } finally {  
+      setLoading(false)  
+    }  
+  }  
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -25,31 +72,37 @@ export default function ContatoPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
                 <h2 className="text-2xl font-bold text-[#111A17] mb-6 font-serif">Fale com Nossos Especialistas</h2>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
                     <div className="space-y-2">
                       <Label htmlFor="name">Nome Completo</Label>
-                      <Input id="name" placeholder="Seu nome" />
+                      <Input id="name" placeholder="Seu nome" value={nome} onChange={(e) => setNome(e.target.value)} required />
                     </div>
+                   
                     <div className="space-y-2">
                       <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" placeholder="seu@email.com" />
+                      <Input id="email" type="email" placeholder="seu@email.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
                     </div>
                   </div>
+                  
                   <div className="space-y-2">
                     <Label htmlFor="phone">Telefone</Label>
-                    <Input id="phone" type="tel" placeholder="(11) 99999-9999" />
+                    <Input id="phone" type="tel" placeholder="(11) 99999-9999" value={telefone} onChange={(e) => setTelefone(e.target.value)} required />
                   </div>
+                  
                   <div className="space-y-2">
                     <Label htmlFor="subject">Assunto</Label>
-                    <Input id="subject" placeholder="Como podemos ajudar?" />
+                    <Input id="subject" placeholder="Como podemos ajudar?" value={assunto} onChange={(e) => setAssunto(e.target.value)} required />
                   </div>
+                  
                   <div className="space-y-2">
                     <Label htmlFor="message">Mensagem</Label>
-                    <Textarea id="message" rows={5} placeholder="Conte-nos mais sobre o que você procura..." />
+                    <Textarea id="message" rows={5} placeholder="Conte-nos mais sobre o que você procura..." value={mensagem} onChange={(e) => setMensagem(e.target.value)} required/>
                   </div>
-                  <Button type="submit" className="w-full bg-[#718878] hover:bg-[#244235] text-white">
-                    Enviar Mensagem
+                  
+                  <Button type="submit" className="w-full bg-[#718878] hover:bg-[#244235] text-white" disabled={loading}>
+                    {loading ? "Enviando..." : "Enviar Mensagem"}
                   </Button>
                 </form>
               </div>
