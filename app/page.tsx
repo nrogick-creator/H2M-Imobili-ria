@@ -13,9 +13,10 @@ export default async function HomePage() {
   const { data: featuredProperties } = await supabase
     .from("properties")
     .select("*")
-    .eq("featured", true)
     .eq("status", "available")
+    .order("featured", { ascending: false })
     .limit(3)
+
 
   return (
     <div className="min-h-screen flex flex-col">
