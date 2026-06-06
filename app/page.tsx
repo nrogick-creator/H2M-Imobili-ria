@@ -15,7 +15,7 @@ export default async function HomePage() {
     .select("*")
     .eq("status", "available")
     .order("featured", { ascending: false })
-    .limit(3)
+    .limit(6)
 
 
   return (
